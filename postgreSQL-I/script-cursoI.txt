@@ -1,0 +1,27 @@
+SELECT * FROM aluno;
+
+INSERT INTO aluno (
+	nome, 
+	cpf, 
+	observacao,
+	idade,
+	dinheiro,
+	altura,
+	ativo,
+	data_nascimento,
+	hora_aula,
+	matriculado_em
+) 
+VALUES (
+	'Diogo',
+	'12345678901',
+	'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac nunc sollicitudin, mollis justo non, feugiat magna. Etiam quis mi quis dui mattis suscipit. Maecenas fringilla nisi blandit sem commodo, rutrum malesuada odio fermentum. Suspendisse vel pulvinar sem. Nunc dapibus est ligula, vitae accumsan quam porttitor in. Phasellus ultrices nulla quam, sit amet ullamcorper nibh hendrerit vitae. Nunc venenatis dignissim imperdiet. Proin et turpis posuere, sodales arcu in, vulputate velit. Fusce lacinia purus dui, et molestie justo pellentesque vitae. Nunc sed augue varius, fringilla eros sit amet, iaculis nibh. Sed eu libero odio. Duis feugiat, tellus non molestie vehicula, lacus lorem auctor purus, id aliquam felis orci vitae ligula. Suspendisse elit neque, imperdiet non tincidunt fermentum, lobortis ut metus. Mauris nulla leo, imperdiet vel massa id, pulvinar varius nisi. Nam a varius velit, ac egestas sem.
+	Integer luctus ante eget tristique dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel sem ante. Phasellus fermentum mi non turpis molestie vulputate. Nulla erat lorem, convallis et libero id, fringilla sollicitudin leo. Cras ut tellus augue. Sed elit tellus, pellentesque non sagittis vel, mattis ut tortor. Sed tortor dui, pharetra quis urna at, tincidunt iaculis nulla. In ac auctor ante. Donec nisi augue, consequat a tempus in, mattis et mauris. Nulla facilisi. Cras aliquet massa eget velit convallis tempor. Vivamus id arcu sed ipsum semper tincidunt.',
+	35,
+	100.50,
+	1.81,
+	TRUE,
+	'1984-08-27',
+	'17:30:00',
+	'2020-02-08 12:32:45'
+);
