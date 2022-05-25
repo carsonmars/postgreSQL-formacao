@@ -55,22 +55,89 @@ WHERE id = 1;
 
 DELETE FROM aluno WHERE id = 2;
 
+//AS ALIAS
 SELECT nome AS "Nome do Aluno", cpf, altura, idade, matriculado_em as Data_Matricula FROM aluno;
 
+//INSERÇÃO
 INSERT INTO aluno (nome) VALUES ('Vinícius Dias');
 INSERT INTO aluno (nome) VALUES ('João Roberto');
 INSERT INTO aluno (nome) VALUES ('Jasmine Marllem');
 
+//DIFERENTE
 SELECT * FROM aluno WHERE nome != 'Jasmine Marllem';
 SELECT * FROM aluno WHERE nome <> 'Jasmine Marllem';
 
 SELECT * FROM aluno WHERE nome = 'Jasmine Marllem';
 
+//LIKE
 SELECT * FROM aluno WHERE nome LIKE '%m';
 SELECT * FROM aluno WHERE nome NOT LIKE '%m';
 
+//NULL E NOTNULL
 SELECT * FROM aluno WHERE CPF ISNULL;
 SELECT * FROM aluno WHERE CPF NOTNULL;
 
+//PK, UNIQUE;
 
+CREATE TABLE curso (
+	id INTEGER NOT NULL UNIQUE,
+	nome VARCHAR(255) NOT NULL	
+);
 
+CREATE TABLE curso (
+	id INTEGER PRIMARY KEY,
+	nome VARCHAR(255) NOT NULL	
+);
+
+INSERT INTO curso (id, nome) VALUES (1, 'HTML');
+INSERT INTO curso (id, nome) VALUES (2, 'JAVASCRIPT');
+
+DROP TABLE aluno_curso;
+
+//FK
+CREATE TABLE aluno_curso (
+	aluno_id INTEGER,
+	curso_id INTEGER,
+	PRIMARY KEY (aluno_id, curso_id),
+	
+	FOREIGN KEY (aluno_id)
+	REFERENCES aluno (id),
+	
+	FOREIGN KEY (curso_id)
+	REFERENCES curso (id)
+);
+
+INSERT INTO aluno_curso (aluno_id, curso_id) VALUES (1,1);
+INSERT INTO aluno_curso (aluno_id, curso_id) VALUES (2,1);
+INSERT INTO aluno_curso (aluno_id, curso_id) VALUES (3,1);
+
+//JUNTAR TABELAS NUMA CONSULTA
+
+SELECT *
+	FROM aluno
+	JOIN aluno_curso ON aluno_curso.aluno_id = aluno.id
+	JOIN curso       ON curso.id             = aluno_curso.curso_id;
+
+SELECT aluno.nome as ALUNO, curso.nome as CURSO
+	FROM aluno
+	JOIN aluno_curso ON aluno_curso.aluno_id = aluno.id
+	JOIN curso ON curso.id=aluno_curso.curso_id;
+
+SELECT aluno.nome as ALUNO, curso.nome as CURSO
+	FROM aluno
+	LEFT JOIN aluno_curso ON aluno_curso.aluno_id = aluno.id
+	LEFT JOIN curso ON curso.id=aluno_curso.curso_id;
+	
+SELECT aluno.nome as ALUNO, curso.nome as CURSO
+	FROM aluno
+	RIGHT JOIN aluno_curso ON aluno_curso.aluno_id = aluno.id
+	RIGHT JOIN curso ON curso.id=aluno_curso.curso_id;
+	
+SELECT aluno.nome as ALUNO, curso.nome as CURSO
+	FROM aluno
+	FULL JOIN aluno_curso ON aluno_curso.aluno_id = aluno.id
+	FULL JOIN curso ON curso.id=aluno_curso.curso_id;
+	
+SELECT aluno.nome as ALUNO, curso.nome as CURSO
+	FROM aluno
+	CROSS JOIN curso;
