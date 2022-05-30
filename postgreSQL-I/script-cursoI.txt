@@ -171,3 +171,23 @@ CREATE TABLE aluno_curso (
 	FOREIGN KEY (curso_id)
 	REFERENCES curso (id)
 );
+
+//ORDENANDO CONSULTAS
+SELECT * FROM funcionarios ORDER BY nome, matricula;
+
+SELECT * FROM funcionarios ORDER BY 3, 4, 2; // os nº referem-se as colunas
+
+//LIMITAÇÃO DE CONSULTA
+SELECT * FROM funcionarios LIMIT 10;
+
+SELECT * FROM funcionarios ORDER BY id LIMIT 5 OFFSET 1; //offset pula o registro 1 nesse caso.
+
+// FUNÇÕES DE AGREGAÇÃO
+COUNT(); AVG(); SUM(); MAX(); MIN();
+
+
+
+
+
+
+
