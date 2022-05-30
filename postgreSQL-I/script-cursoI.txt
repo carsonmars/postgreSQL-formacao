@@ -141,3 +141,33 @@ SELECT aluno.nome as ALUNO, curso.nome as CURSO
 SELECT aluno.nome as ALUNO, curso.nome as CURSO
 	FROM aluno
 	CROSS JOIN curso;
+
+//DELETAR DA TABELA aluno gera um erro, pois por padrão haverá uma restrição deleção em cascade;
+
+CREATE TABLE aluno_curso (
+	aluno_id INTEGER,
+	curso_id INTEGER,
+	PRIMARY KEY (aluno_id, curso_id),
+	
+	FOREIGN KEY (aluno_id)
+	REFERENCES aluno (id)
+	ON DELETE CASCADE, //<<<<<<<<<<<<<<
+	
+	FOREIGN KEY (curso_id)
+	REFERENCES curso (id)
+);
+
+//Atualização em cascata
+CREATE TABLE aluno_curso (
+	aluno_id INTEGER,
+	curso_id INTEGER,
+	PRIMARY KEY (aluno_id, curso_id),
+	
+	FOREIGN KEY (aluno_id)
+	REFERENCES aluno (id)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE, //<<<<<<<<<<<< 
+	
+	FOREIGN KEY (curso_id)
+	REFERENCES curso (id)
+);
